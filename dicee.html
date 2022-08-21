@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dicee</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Roll Me</h1>
+
+    <div class="dice">
+      <p>Player 1</p>
+      <img class="img1" src="./images/dice6.png" alt="Image not found">
+    </div>
+
+    <div class="dice">
+      <p>Player 2</p>
+      <img class="img2" src="./images/dice6.png" alt="Image not found">
+    </div>
+  </div>
+  <input type="button" value="Roll" onclick="roll()" id="rollBtn">
+</body>
+
+<script>
+  function randomDiceNumber() {
+    var num = Math.ceil(Math.random() * 5);
+    return num;
+
+  }
+
+  function roll() {
+    var dice1 = randomDiceNumber();
+    var dice1ImageValue = "./images/dice" + dice1 + ".png";
+    var dice2 = randomDiceNumber();
+    var dice2ImageValue = "./images/dice" + dice2 + ".png";
+
+    console.log(dice1, dice2);
+
+    if (dice1 > dice2) {
+      document.querySelector("h1").innerHTML = "Player 1 Wins";
+    }
+    else if (dice2 > dice1) {
+      document.querySelector("h1").innerHTML = "Player 2 Wins";
+    }
+    else {
+      document.querySelector("h1").innerHTML = "Draw ";
+    }
+    document.querySelector("div div img.img1").setAttribute("src", dice1ImageValue);
+    document.querySelector("div div img.img2").setAttribute("src", dice2ImageValue);
+  }
+</script>
+
+</html>
